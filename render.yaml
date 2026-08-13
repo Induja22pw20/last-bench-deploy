@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: lastbench-backend
+    env: python
+    buildCommand: "pip install -r backend/requirements.txt"
+    startCommand: "cd backend && uvicorn app:socket_app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      # IMPORTANT: Do not put your actual keys here! 
+      # GitHub will block the push if it detects secrets.
+      # Instead, add GROQ_API_KEY and MONGO_URI directly in the Render Dashboard under "Environment Variables".
